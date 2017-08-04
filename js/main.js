@@ -2,18 +2,21 @@ var generar = document.getElementById('ejecutar');
 var solucion = document.getElementById('solucion');
 var paso = document.getElementById('paso');
 var tablero = document.getElementById('tablero');
+/*Creamos 3 varibles nuevas */
+/*La primera variable  que almacenara el numero de celdas*/
+var numeroC;
+/*La segunda variable que almacenará nuestro array*/
+var respuesta =[];
+/*La tercera variable que almacenará nuestro paso actual en el juego*/
+var actual =0;
 
-function printMatrix (M){
-    console.log ("___________________");
-    for (var i = 0; i < M.length; i++)
-        console.log (M[i]);   
-    console.log ("___________________");
-}
+
 function check (i, j, n) {
    if (  i >= 0 && j >= 0 && i < n && j < n)
        return true;
    return false;   
 }
+
 function randInt (n) {
    return Math.floor(Math.random () * n);
 }
@@ -112,14 +115,19 @@ function initMatrix (n) {
 }
 
 generar.onclick = function () {
+    
     tablero.innerHTML = '';
     var n = parseInt(document.getElementById('lados').value);
+    
+     if(lados.value.length == ""){ 
+      alert("Debes ingresar un numero");
+     }
+    else{
     
     for( var i = 0; i < 1000; i++) {
         var M = initMatrix (n);
         var helper = gen_heuristic (n);
         if (gen_solution (M, helper, n) ) {
-            printMatrix (M);
             break;
         }
     }
@@ -142,10 +150,26 @@ generar.onclick = function () {
         tabla.appendChild(fila);
     }
     tablero.appendChild(tabla);
+  }
 }
 
-paso.onclick = function () {
+pasito.onclick = function () {
+    if (actual == numeroC*numeroC){
+        alert("Fin del Juego!");
+        actual= 0;
+        respuesta = [];
+        return;
+    }
     
-    
+    if(actual<(numeroC*numeroC -1)){
+        /*utilizaremos el metodo sort para ordenar los elementos de nuestro array*/
+        respuesta = respuesta.sort(function(x,y){
+        /* Retornamos y utilizamos la propiedad textContent porque esta propiedad en un nodo elimina todos sus hijos y los reemplaza con un solo nodo de texto con el valor dado.*/
+        return x.textContent - y.text.Content;
+        });
+    /*Utilizamos esta propiedad del setatributte porque agrega un nuevo atributo o cambia el valor de un atributo en un elemento especificado. "pasito" es el valor deseado para el atributo*/
+    respuesta[actual].setAttribute("class",  "pasito");
+    actual++;
+    }
 }
 
