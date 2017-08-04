@@ -4,6 +4,43 @@
 }
 
 td{
-  width: 40px;
-  height: 40px;
+  width: 100px;
+  height: 100px;
+  position: inherit;
+}
+
+
+input{
+  border: none;
+  width: 20%;
+  padding: 10px;
+  float: left;
+  font-size: 13px;
+}
+
+input:focus {
+  background-color: #EDEFEE;
+}
+input[type=text] {
+  width: 100px;
+  transition: width .35s ease-in-out;
+}
+input[type=text]:focus {
+  width: 250px;
+}
+
+.addBtn {
+  padding: 10px;
+  width: 15%;
+  background: #3290EE;
+  color: #ECECEC;
+  float: center;
+  text-align: center;
+  font-size: 16x;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.addBtn:hover {
+  background-color: #443BF5;
 }
