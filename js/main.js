@@ -1,6 +1,6 @@
 var generar = document.getElementById('ejecutar');
 var solucion = document.getElementById('solucion');
-var paso = document.getElementById('paso');
+var pasito = document.getElementById('pasito');
 var tablero = document.getElementById('tablero');
 /*Creamos 3 varibles nuevas */
 /*La primera variable  que almacenara el numero de celdas*/
@@ -72,6 +72,12 @@ function gen_solution (M, helper, n) {
     var step = 1;
     var x = 0; var y = 0;
     
+     var inicioRandom = [{x:0,y:0},{x:0,y:n-1},{x:n-1,y:0},{x:n-1,y:n-1}];
+    var inicio = inicioRandom[Math.floor(Math.random ()* 4)];
+    var x = inicio.x;
+    var y = inicio.y;
+
+    
     M[x][y] = step;
     while ( true ) {
         if ( step == n * n) {
@@ -115,7 +121,8 @@ function initMatrix (n) {
 }
 
 generar.onclick = function () {
-    
+    actual=0;
+    respuesta=[];
     tablero.innerHTML = '';
     var n = parseInt(document.getElementById('lados').value);
     
@@ -141,9 +148,9 @@ generar.onclick = function () {
             if (i % 2 == 0 && j % 2 != 0 || i % 2 != 0 && j % 2 == 0) {
                 celda.setAttribute('class', 'negro');
             }
-            var p = document.createElement('p');
+            /*var p = document.createElement('p');
             p.innerHTML = M[i][j];
-            celda.appendChild(p);
+            celda.appendChild(p);*/
             
             fila.appendChild(celda);
         }
@@ -153,6 +160,48 @@ generar.onclick = function () {
   }
 }
 
+solucion.onclick = function(){
+    
+    tablero.innerHTML = '';
+    var n = parseInt(document.getElementById('lados').value);
+    
+    for( var i = 0; i < 1000; i++) {
+        var M = initMatrix (n);
+        var helper = gen_heuristic (n);
+        if (gen_solution (M, helper, n) ) {
+            break;
+        }
+     }
+    
+    var tabla = document.createElement('table');
+    tabla.border = "1";
+    for (var i = 0; i < n; i++) {
+        var fila = document.createElement('tr');
+        for (var j = 0; j < n; j++) {
+            var celda = document.createElement('td');
+            if (i % 2 == 0 && j % 2 != 0 || i % 2 != 0 && j % 2 == 0) {
+                celda.setAttribute('class', 'negro');
+            }
+            var p = document.createElement('p');
+            p.innerHTML = M[i][j];
+            celda.appendChild(p);
+            
+            fila.appendChild(celda);
+        }
+        tabla.appendChild(fila);
+    }
+    tablero.appendChild(tabla);
+    ordenarArray();
+}
+
+function ordenarArray(){
+/*utilizaremos el metodo sort para ordenar los elementos de nuestro array*/
+respuesta = respuesta.sort(function(a, b){
+/* Retornamos y utilizamos la propiedad textContent porque esta propiedad en un nodo elimina todos sus hijos y los reemplaza con un solo nodo de texto con el valor dado.*/
+return a.textContent - b.textContent;
+  });
+}
+    
 pasito.onclick = function () {
     if (actual == numeroC*numeroC){
         alert("Fin del Juego!");
@@ -161,12 +210,7 @@ pasito.onclick = function () {
         return;
     }
     
-    if(actual<(numeroC*numeroC -1)){
-        /*utilizaremos el metodo sort para ordenar los elementos de nuestro array*/
-        respuesta = respuesta.sort(function(x,y){
-        /* Retornamos y utilizamos la propiedad textContent porque esta propiedad en un nodo elimina todos sus hijos y los reemplaza con un solo nodo de texto con el valor dado.*/
-        return x.textContent - y.text.Content;
-        });
+    if(actual<(numeroC*numeroC)){
     /*Utilizamos esta propiedad del setatributte porque agrega un nuevo atributo o cambia el valor de un atributo en un elemento especificado. "pasito" es el valor deseado para el atributo*/
     respuesta[actual].setAttribute("class",  "pasito");
     actual++;
