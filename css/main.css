@@ -1,60 +1,75 @@
-body{
-    padding-left: 10%;
-    background-image: url(../img/fondo.png);
-    background-size: cover;
-   
-    
-}
+    @import url('https://fonts.googleapis.com/css?family=Alfa+Slab+One|Black+Ops+One|Chelsea+Market|Fredericka+the+Great|Londrina+Solid|Sigmar+One');
 
-.negro{
-  background-color: black;
-  color:white;
-}
+    body{
+        padding-left: 10%;
+        background-image: url(../img/fondo.png);
+        background-size: cover;
+    }
 
-td{
-  width: 80px;
-  height: 80px;
-  position: inherit;
-text-align: center;
-}
+    h1{
+        font-size: 40px;
+        font-family: 'Londrina Solid', cursive;
+        text-shadow: #F1D11C 6px 0;
+    }
+
+    h3{
+        font-size: 16px;
+        font-family: 'Chelsea Market', cursive;
+        text-shadow: #F7981E 3px 0;
+    }
 
 
-input{
-  border: none;
-  width: 10%;
-  padding: 10px;
-  float: left;
-  font-size: 13px;
-}
 
-input:focus {
-  background-color: #F9EB77;
-}
-input[type=text] {
-  width: 100px;
-  transition: width .35s ease-in-out;
-}
-input[type=text]:focus {
-  width: 250px;
-}
+    .negro{
+        background-color: black;
+        color:white;
+    }
 
-.addBtn {
-  padding: 10px;
-  width: 15%;
-  background: #B58715;
-  color: #ECECEC;
-  float: center;
-  text-align: center;
-  font-size: 16x;
-  cursor: pointer;
-  transition: 0.3s;
-}
+    td{
+        width: 80px;
+        height: 80px;
+        position: inherit;
+        text-align: center;
+    }
 
-.addBtn:hover {
-  background-color: #F9E00B;
-}
-.pasito{
-    background-color: #ffff00;
-    transition-property: background-color;
-    transition-duration: .6s;
-}
+
+    input{
+        border: none;
+        width: 10%;
+        padding: 10px;
+        float: left;
+        font-size: 13px;
+    }
+
+    input:focus {
+        background-color: #F9EB77;
+    }
+    input[type=text] {
+        width: 100px;
+        transition: width .35s ease-in-out;
+    }
+    input[type=text]:focus {
+        width: 250px;
+    }
+
+    .addBtn {
+        padding: 10px;
+        width: 15%;
+        background: #EC7109;
+        color: #ECECEC;
+        float: center;
+        text-align: center;
+        font-size: 16x;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+    .addBtn:hover {
+        background-color: #F9E00B;
+    }
+
+    .pasito{
+        background-color: #ffff00;
+        transition-property: background-color;
+        transition-duration: .6s;
+    }
